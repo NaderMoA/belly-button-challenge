@@ -31,7 +31,8 @@ function drawBarChart(SampleName){
         x: dataset.sample_values.slice(0,10).reverse(),
         y: dataset.otu_ids.map( record => `OTU ${record}`).slice(0,10).reverse(),
         type: "bar",
-        orientation: "h"
+        orientation: "h",
+        marker: {color: ['#B19470', '#7DB9B6', '#43766C', '#E96479', '#26577C', '#EAE2B7', '#FCBF49', '#F77F00', '#D62828', '#003049']}
 };
 Plotly.newPlot("bar",[trace1])
 })
