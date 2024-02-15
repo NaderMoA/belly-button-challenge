@@ -13,7 +13,7 @@ let sampleName0= names[0];
 
 drawBarChart(sampleName0)
 drawBubbleChart(sampleName0)
-
+drawDemographicInfo(sampleName0)
     });}
 
 function drawBarChart(SampleName){
@@ -32,12 +32,9 @@ function drawBarChart(SampleName){
         marker: {color: ['#B19470', '#7DB9B6', '#43766C', '#E96479', '#26577C', '#EAE2B7', '#FCBF49', '#F77F00', '#D62828', '#003049']},
         
 };
-
 Plotly.newPlot("bar",[trace1])
 })
-} 
-
-
+}
 
 // creating the bubble chart
 function drawBubbleChart(SampleName){
@@ -61,11 +58,28 @@ layout ={ xaxis: {
 
 Plotly.newPlot("bubble",[trace2],layout)
      })
-
 }
+
+//creating demographic display
+function drawDemographicInfo(SampleName){
+    data = d3.json(url).then(response =>{
+    let demoList = response.metadata;
+    let dataset = demoList.filter(sample => sample.id == SampleName)[0];
+    console.log(dataset)
+    let demoDiv = d3.select("#sample-metadata");
+    demoDiv.html("")
+    for (let i in dataset ) {
+        
+        demoDiv.append("p").text(`${i} : ${dataset[i]}`)
+        
+    }
+})
+}
+
 initi()
 function optionChanged(sampleID){
     console.log(sampleID);
     drawBarChart(sampleID);
     drawBubbleChart(sampleID);
+    drawDemographicInfo(sampleID)
 }
