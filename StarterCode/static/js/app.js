@@ -65,7 +65,6 @@ function drawDemographicInfo(SampleName){
     data = d3.json(url).then(response =>{
     let demoList = response.metadata;
     let dataset = demoList.filter(sample => sample.id == SampleName)[0];
-    console.log(dataset)
     let demoDiv = d3.select("#sample-metadata");
     demoDiv.html("")
     console.log(dataset)
