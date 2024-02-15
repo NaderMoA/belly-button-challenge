@@ -56,7 +56,10 @@ let trace2 ={
         colorscale: 'Bluered'
     }
 };
-Plotly.newPlot("bubble",[trace2])
+layout ={ xaxis: {
+    title: 'OTU ID'}};
+
+Plotly.newPlot("bubble",[trace2],layout)
      })
 
 }
