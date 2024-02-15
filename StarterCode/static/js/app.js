@@ -68,10 +68,10 @@ function drawDemographicInfo(SampleName){
     console.log(dataset)
     let demoDiv = d3.select("#sample-metadata");
     demoDiv.html("")
+    console.log(dataset)
     for (let i in dataset ) {
         
-        demoDiv.append("p").text(`${i} : ${dataset[i]}`)
-        
+        demoDiv.append("p").text(`${i} : ${dataset[i]}`)  
     }
 })
 }
